@@ -81,4 +81,5 @@ def health():
 # Serve the index.html file
 @app.get("/")
 def read_index():
+    """Serve the index.html file."""
     return FileResponse("docs/index.html")
