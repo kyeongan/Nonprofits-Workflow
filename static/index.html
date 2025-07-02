@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonprofits Workflows API</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #00b894;
+            --bg: #f4f8fb;
+            --white: #fff;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            background: linear-gradient(120deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px 60px 20px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2em;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-btn {
+            background: var(--white);
+            color: var(--primary);
+            padding: 14px 36px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta-btn:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+        .info-section {
+            background: var(--white);
+            margin: -40px auto 0 auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.07);
+            max-width: 700px;
+            padding: 36px 28px;
+            position: relative;
+            z-index: 2;
+        }
+        .info-section h2 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        .info-section ul {
+            padding-left: 1.2em;
+            color: #444;
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .info-section { padding: 24px 8px; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Nonprofits Workflows API</h1>
+        <p>Empowering nonprofit organizations with workflow automation and management tools.<br>
+        Fast, reliable, and easy to integrate.</p>
+        <a class="cta-btn" href="/docs">View API Documentation</a>
+    </section>
+    <section class="info-section">
+        <h2>About This Project</h2>
+        <ul>
+            <li>Modern backend API built with FastAPI</li>
+            <li>Designed for workflow automation in the nonprofit sector</li>
+            <li>Easy to deploy, extend, and integrate</li>
+            <li>Open-source and community-driven</li>
+        </ul>
+    </section>
+</body>
+</html> 

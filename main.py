@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import List, Dict
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 
@@ -71,3 +72,13 @@ def get_all_nonprofits():
     """Retrieve all nonprofits."""
     return list(nonprofits.values())
 
+# Health check endpoint
+@app.get("/health")
+def health():
+    """Health check endpoint."""
+    return {"status": "ok"}
+
+# Serve the index.html file
+@app.get("/")
+def read_index():
+    return FileResponse("static/index.html")
