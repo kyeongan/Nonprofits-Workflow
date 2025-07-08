@@ -6,6 +6,7 @@ This is a simple backend API implementation for the nonprofits workflow using Fa
 - Create nonprofits (name, address, email)
 - Bulk send templated emails to nonprofits
 - Retrieve all sent emails
+- Email threading and reply support (email chains)
 - In-memory data storage (no database required)
 - Mocked email sending (no real emails sent)
 
@@ -48,6 +49,24 @@ Redoc documentation is also available at [http://127.0.0.1:8000/redoc](http://12
 }
 ```
 - `GET /sent-emails` — List all sent emails
+
+### Email Threading & Reply Endpoints
+- `POST /emails/{email_id}/reply` — Reply to a sent email (creates a new email in the same thread)
+  - Path parameter: `email_id` (the id of the email to reply to)
+  - Example body:
+    ```json
+    {
+      "template": "Re: Hello {name}, ...",
+      "emails": ["contact@helpinghands.org"],
+      "cc": []
+    }
+    ```
+- `GET /threads/{thread_id}/emails` — Get all emails in a thread
+  - Path parameter: `thread_id` (the id of the thread)
+
+#### Notes on Email Chains
+- Every sent email has a unique `id` and a `thread_id` for chain tracking.
+- Replies reference the original email via `in_reply_to` and share the same `thread_id`.
 
 ## Notes
 - No authentication required
