@@ -1,0 +1,65 @@
+{
+  "info": {
+    "name": "Nonprofits Workflows API",
+    "description": "Postman collection for nonprofits-workflows FastAPI backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8000/health", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["health"] }
+      }
+    },
+    {
+      "name": "Get All Nonprofits",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8000/nonprofits", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["nonprofits"] }
+      }
+    },
+    {
+      "name": "Create Nonprofit",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Sample Nonprofit\",\n  \"address\": \"123 Main St, City, State\",\n  \"email\": \"sample@nonprofit.org\"\n}"
+        },
+        "url": { "raw": "http://localhost:8000/nonprofits", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["nonprofits"] }
+      }
+    },
+    {
+      "name": "Send Templated Email",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"template\": \"Hello {name}, your address is {address}.\",\n  \"emails\": [\n    \"contact@helpinghands.org\",\n    \"info@greenearth.org\"\n  ]\n}"
+        },
+        "url": { "raw": "http://localhost:8000/send-email", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["send-email"] }
+      }
+    },
+    {
+      "name": "Get All Sent Emails",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8000/sent-emails", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["sent-emails"] }
+      }
+    },
+    {
+      "name": "Serve index.html",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8000/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": [""] }
+      }
+    }
+  ]
+}
