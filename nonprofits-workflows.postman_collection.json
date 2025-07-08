@@ -60,6 +60,76 @@
         "header": [],
         "url": { "raw": "http://localhost:8000/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": [""] }
       }
+    },
+    {
+      "name": "Save Draft",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"template\": \"Hello {name}, your address is {address}.\",\n  \"emails\": [\n    \"contact@helpinghands.org\"\n  ],\n  \"cc\": [\n    \"info@greenearth.org\"\n  ]\n}"
+        },
+        "url": { "raw": "http://localhost:8000/drafts", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["drafts"] }
+      }
+    },
+    {
+      "name": "Reload Draft",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8000/drafts/:draft_id", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["drafts", ":draft_id"] }
+      }
+    },
+    {
+      "name": "List Drafts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8000/drafts", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["drafts"] }
+      }
+    },
+    {
+      "name": "Send Draft",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": { "raw": "http://localhost:8000/drafts/:draft_id/send", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["drafts", ":draft_id", "send"] }
+      }
+    },
+    {
+      "name": "Reply to Email",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"template\": \"Re: Hello {name}, ...\",\n  \"emails\": [\n    \"contact@helpinghands.org\"\n  ],\n  \"cc\": []\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/emails/:email_id/reply",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["emails", ":email_id", "reply"]
+        }
+      },
+      "description": "Reply to a sent email, creating a new email in the same thread. :email_id is the id of the email being replied to."
+    },
+    {
+      "name": "Get Emails in Thread",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/threads/:thread_id/emails",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["threads", ":thread_id", "emails"]
+        }
+      },
+      "description": "Get all emails in a thread by thread_id."
     }
   ]
 }
