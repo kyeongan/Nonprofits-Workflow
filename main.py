@@ -3,6 +3,7 @@ from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import List, Dict
 from fastapi.responses import FileResponse
+from contextlib import asynccontextmanager
 
 app = FastAPI()
 
@@ -25,9 +26,8 @@ class SentEmail(BaseModel):
 nonprofits: Dict[str, NonprofitCreate] = {}
 sent_emails: List[SentEmail] = []
 
-# Pre-populate nonprofits for testing
-@app.on_event("startup")
-def startup_populate():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     sample_nonprofits = [
         NonprofitCreate(name="Helping Hands", address="123 Charity Lane, Springfield, IL", email="contact@helpinghands.org"),
         NonprofitCreate(name="Green Earth", address="456 Forest Ave, Portland, OR", email="info@greenearth.org"),
@@ -37,6 +37,9 @@ def startup_populate():
     ]
     for np in sample_nonprofits:
         nonprofits[np.email] = np
+    yield
+
+app = FastAPI(lifespan=lifespan)
 
 # Create a nonprofit
 @app.post("/nonprofits")
